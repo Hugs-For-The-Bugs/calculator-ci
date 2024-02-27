@@ -11,4 +11,11 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         assertTrue( calculator.add(1, 1) == 2 );
     }
+    @Test
+    public void subTest()
+    {
+        Calculator calculator = new Calculator();
+        assertTrue(calculator.sub(1,1) == 0);
+         
+    }
 }
