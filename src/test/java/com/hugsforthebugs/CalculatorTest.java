@@ -13,6 +13,14 @@ public class CalculatorTest {
     }
 
     @Test
+    public void subTest()
+    {
+        Calculator calculator = new Calculator();
+        assertTrue(calculator.sub(1,1) == 0);
+         
+    }
+
+    @Test
     public void divideTest()
     {
         Calculator calculator = new Calculator();
