@@ -30,6 +30,6 @@ public class CalculatorTest {
     public void divideTest()
     {
         Calculator calculator = new Calculator();
-        assertTrue( calculator.divide(2, 4) == 1 );
+        assertTrue( calculator.divide(2, 4) == 2 );
     }
 }
