@@ -21,6 +21,12 @@ public class CalculatorTest {
     }
 
     @Test
+    public void multiplyTest(){
+        Calculator calculator = new Calculator();
+        assertTrue(calculator.mul(0,0) == 0);
+    }
+
+    @Test
     public void divideTest()
     {
         Calculator calculator = new Calculator();
