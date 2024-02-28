@@ -1,5 +1,6 @@
 package com.hugsforthebugs;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -36,5 +37,18 @@ public class CalculatorTest {
     {
         Calculator calculator = new Calculator();
         assertTrue( calculator.divide(4, 2) == 2 );
+    }
+
+    @Test
+    public void squarerootTest()
+    {
+        Calculator calculator = new Calculator();
+        assertEquals(2.0, calculator.squareroot(4), 0.000001);
+        // test for negative numbers
+        try {
+            calculator.squareroot(-1);
+        } catch (ArithmeticException e) {
+            assertEquals("Square root of negative number", e.getMessage());
+        }
     }
 }
