@@ -10,6 +10,13 @@ public class Calculator {
     }
 
     public int mul(int a, int b){
+        //overflow check
+        long tempResult = (long)a * (long)b;
+        if (tempResult > Integer.MAX_VALUE) {
+            throw new ArithmeticException("Overflow (Positive)!");
+        }else if(tempResult < Integer.MIN_VALUE){
+            throw new ArithmeticException("Overflow (Negative)!");
+        }
         return a*b;
     }
 

@@ -2,6 +2,7 @@ package com.hugsforthebugs;
 
 import static org.junit.Assert.assertTrue;
 
+
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -20,10 +21,13 @@ public class CalculatorTest {
          
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void multiplyTest(){
         Calculator calculator = new Calculator();
+        long overflowNum = Long.valueOf("4611686014132420609");
         assertTrue(calculator.mul(0,0) == 0);
+        assertTrue(calculator.mul(2147483647, 2147483647) == overflowNum); //expecting this multiplication to be failed with overflow expection
+        assertTrue(calculator.mul(-2147483647, 2147483647) == -overflowNum); //expecting this multiplication to be failed with overflow expection
     }
 
     @Test
