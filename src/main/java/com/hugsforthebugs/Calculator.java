@@ -26,4 +26,11 @@ public class Calculator {
         }
         return a / b;
     }
+
+    public double squareroot(double a) {
+        if (a < 0) {
+            throw new ArithmeticException("Square root of negative number");
+        }
+        return Math.sqrt(a);
+    }
 }
