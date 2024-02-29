@@ -51,4 +51,26 @@ public class CalculatorTest {
             assertEquals("Square root of negative number", e.getMessage());
         }
     }
+
+    @Test
+    public void factorialTest(){
+        Calculator calculator = new Calculator();
+        assertEquals(1, calculator.factorial(0), 0.000001); // test for 0
+        // test for positive number
+        assertEquals(3628800, calculator.factorial(10),0.00001);
+        
+        // test for positive number that will cause overflow
+        try {
+            calculator.factorial(100);
+        } catch (ArithmeticException e) {
+            assertEquals("Result overflow max value of long type", e.getMessage());
+        }
+
+        // test for negative number
+        try {
+            calculator.factorial(-1);
+        } catch (ArithmeticException e) {
+            assertEquals("Input number must be greater or equal to 0", e.getMessage());
+        }
+    }
 }
