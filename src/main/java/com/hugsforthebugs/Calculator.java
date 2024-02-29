@@ -33,4 +33,22 @@ public class Calculator {
         }
         return Math.sqrt(a);
     }
+    
+    public long factorial(int n){
+        // 25 - Normal Maximum
+        // 26~65 - Overflow Long
+        // >66 - Return 0
+        if (n<0) {
+            throw new ArithmeticException("Input number must be greater or equal to 0");
+        }
+        if (n>25) {
+            throw new ArithmeticException("Result overflow max value of long type");
+        }
+        if (n == 0){
+            // arbitrarily return 1 for non-positive numbers
+            return 1;
+        }else {
+          return (n * factorial(n-1));
+        }
+    } 
 }
