@@ -3,7 +3,7 @@ package com.hugsforthebugs;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -71,6 +71,24 @@ public class CalculatorTest {
             calculator.factorial(-1);
         } catch (ArithmeticException e) {
             assertEquals("Input number must be greater or equal to 0", e.getMessage());
+        }
+    }
+
+    @Test
+    public void mod_ok() {
+        Calculator calculator = new Calculator();
+        assertTrue( calculator.mod(5, 2) == 1 );
+        assertTrue( calculator.mod(4, 2) == 0 );
+    }
+
+    @Test
+    public void mod_ng() {
+        Calculator calculator = new Calculator();
+        try {
+            calculator.mod(1, 0);
+            fail("No ArithmeticException");
+        } catch (ArithmeticException e) {
+            assertEquals("Division by zero", e.getMessage());
         }
     }
 }
