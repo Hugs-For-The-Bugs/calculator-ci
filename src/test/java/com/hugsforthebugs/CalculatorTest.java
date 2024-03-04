@@ -93,3 +93,11 @@ public class CalculatorTest {
     }
     
 }
+@Test
+    public void powerTest(){
+        Calculator calculator = new Calculator();
+        
+        assertTrue( calculator.power(5, 0) == 1 );
+        assertTrue( calculator.power(4, 2) == 16 );
+        
+    }
