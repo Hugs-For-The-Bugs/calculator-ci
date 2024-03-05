@@ -75,6 +75,29 @@ public class CalculatorTest {
     }
 
     @Test
+    public void sinTest(){
+        Calculator calculator = new Calculator();
+
+        // input 0
+        assertEquals(0, calculator.sin(0.0),0.0001);
+
+        //negative
+        assertEquals(0.5, calculator.sin(30.0),0.0001);
+
+        //positive
+        assertEquals(-0.5, calculator.sin(-30.0),0.0001);
+
+        //Invalid inputs: positive inf
+        assertEquals(Double.NaN, calculator.sin(Double.POSITIVE_INFINITY),0);
+
+        //Invalid inputs: negative inf
+        assertEquals(Double.NaN, calculator.sin(Double.NEGATIVE_INFINITY),0);
+
+        //Invalid inputs: NaN
+        assertEquals(Double.NaN, calculator.sin(Double.NaN),0);
+    }
+
+    @Test
     public void mod_ok() {
         Calculator calculator = new Calculator();
         assertTrue( calculator.mod(5, 2) == 1 );
