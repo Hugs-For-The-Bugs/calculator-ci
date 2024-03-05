@@ -51,6 +51,16 @@ public class Calculator {
           return (n * factorial(n-1));
         }
     } 
+    
+    public double sin (double x){
+        if (x == Double.POSITIVE_INFINITY || x == Double.NEGATIVE_INFINITY || x == Double.NaN) {
+            return Double.NaN;
+        }
+        // the parameter is assumed to be in degree
+        // so we first convert it into radians
+        double x_in_radians = Math.toRadians(x);
+        return Math.sin(x_in_radians);
+    }
 
     public int mod(int a, int b) {
         if (b == 0) {
