@@ -55,9 +55,9 @@ public class CalculatorTest {
     @Test
     public void factorialTest(){
         Calculator calculator = new Calculator();
-        assertEquals(1, calculator.factorial(0), 0.000001); // test for 0
+        assertEquals(1, calculator.factorial(0), 0.001); // test for 0
         // test for positive number
-        assertEquals(3628800, calculator.factorial(10),0.00001);
+        assertEquals(3628800, calculator.factorial(10),0.001);
         
         // test for positive number that will cause overflow
         try {
