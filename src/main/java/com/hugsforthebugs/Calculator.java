@@ -64,12 +64,6 @@ public class Calculator {
         return Math.sin(x_in_radians);
     }
 
-    public int mod(int a, int b) {
-        if (b == 0) {
-          throw new ArithmeticException("Division by zero");
-        }
-        return a % b;
-    }
     public double power(double a, int b) {
         if (b == 0) {
         return 1; 
