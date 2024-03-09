@@ -66,22 +66,29 @@ public class Calculator {
 
     public double power(double a, int b) {
         if (b == 0) {
-        return 1; 
-    }
-    
-        double result = 1.0;
-        int absB = Math.abs(b); 
+            return 1; 
+        }
+        
+            double result = 1.0;
+            int absB = Math.abs(b); 
 
-       for (int i = 0; i < absB; i++) {
-       result *= a;
-    }
+        for (int i = 0; i < absB; i++) {
+        result *= a;
+        }
+        
     
-  
-        if (b < 0) {
-        result = 1.0 / result;
+            if (b < 0) {
+            result = 1.0 / result;
+        }
+        
+        return result;
     }
-    
-    return result;
-}
+
+    public int mod(int a, int b) {
+        if (b == 0) {
+        throw new ArithmeticException("Division by zero");
+        }
+        return a % b;
+    }
 
 }
