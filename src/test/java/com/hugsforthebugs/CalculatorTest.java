@@ -106,7 +106,24 @@ public class CalculatorTest {
         
     }
 
+    @Test
+    public void mod_ok() {
+        Calculator calculator = new Calculator();
+        assertTrue( calculator.mod(5, 2) == 1 );
+        assertTrue( calculator.mod(4, 2) == 0 );
     }
+
+    @Test
+    public void mod_ng() {
+        Calculator calculator = new Calculator();
+        try {
+            calculator.mod(1, 0);
+            fail("No ArithmeticException");
+        } catch (ArithmeticException e) {
+            assertEquals("Division by zero", e.getMessage());
+        }
+    }
+}
 
     
 
