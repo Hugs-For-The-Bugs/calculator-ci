@@ -123,4 +123,20 @@ public class CalculatorTest {
             assertEquals("Division by zero", e.getMessage());
         }
     }
+
+    @Test
+    public void isPrimeTest() {
+        Calculator calculator = new Calculator();
+        assertTrue(calculator.isPrime(2));
+        assertTrue(calculator.isPrime(3));
+        assertTrue(calculator.isPrime(5));
+        assertTrue(calculator.isPrime(7));
+        assertTrue(calculator.isPrime(11));
+
+        assertFalse(calculator.isPrime(0));
+        assertFalse(calculator.isPrime(1));
+        assertFalse(calculator.isPrime(4));
+        assertFalse(calculator.isPrime(6));
+        assertFalse(calculator.isPrime(8));
+    }
 }
