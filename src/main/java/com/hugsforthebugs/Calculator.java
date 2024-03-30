@@ -1,5 +1,7 @@
 package com.hugsforthebugs;
 
+import java.util.Stack;
+
 public class Calculator {
     public int add(int a, int b) {
         return a + b;
@@ -98,6 +100,70 @@ public class Calculator {
             }
         }
         return true;
+    }
+
+    // A method for executing a sequence of complex operations from a string (except
+    // for square root and factorial)
+    public int fourArithmetic(String expression) {
+        Stack<Integer> numbers = new Stack<>();
+        Stack<Character> operations = new Stack<>();
+
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+
+            if (Character.isDigit(c)) {
+                // Extend this to handle multi-digit numbers
+                int num = 0;
+                while (i < expression.length() && Character.isDigit(expression.charAt(i))) {
+                    num = num * 10 + (expression.charAt(i) - '0');
+                    i++;
+                }
+                numbers.push(num);
+                i--; // Since the loop increments i, decrement it here after number parsing
+            } else if (c == '(') {
+                operations.push(c);
+            } else if (c == ')') {
+                while (operations.peek() != '(') {
+                    numbers.push(applyOp(operations.pop(), numbers.pop(), numbers.pop()));
+                }
+                operations.pop();
+            } else if (c == '+' || c == '-' || c == '*' || c == '/') {
+                while (!operations.isEmpty() && hasPrecedence(c, operations.peek())) {
+                    numbers.push(applyOp(operations.pop(), numbers.pop(), numbers.pop()));
+                }
+                operations.push(c);
+            }
+        }
+
+        while (!operations.isEmpty()) {
+            numbers.push(applyOp(operations.pop(), numbers.pop(), numbers.pop()));
+        }
+
+        return numbers.pop();
+    }
+
+    public boolean hasPrecedence(char op1, char op2) {
+        if (op2 == '(' || op2 == ')')
+            return false;
+        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-'))
+            return false;
+        return true;
+    }
+
+    public int applyOp(char op, int b, int a) {
+        switch (op) {
+            case '+':
+                return add(a, b);
+            case '-':
+                return sub(a, b);
+            case '*':
+                return mul(a, b);
+            case '/':
+                if (b == 0)
+                    throw new UnsupportedOperationException("Cannot divide by zero");
+                return divide(a, b);
+        }
+        throw new UnsupportedOperationException("Unsupported operation " + op);
     }
 
 }
